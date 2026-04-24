@@ -1,0 +1,56 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="container w-50 border p-5 fs-5 newPostContainer" style="margin-top: -60px">
+        <form class="needs-validation p-2" novalidate="" action="/<%= post.category%>/<%=post.id%>/?_method=PUT"
+            method="POST">
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label for="firstName" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Add title..."
+                        value="<%= post.title %>" required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <label for="address" class="form-label">Post</label>
+                    <textarea class="form-control" placeholder="Write your post here..." id="floatingTextarea2"
+                        name="post" style="height: 100px"><%= post.post %></textarea>
+                    <div class="invalid-feedback">
+                        Enter your post...
+                    </div>
+                </div>
+
+                <div class="col-md-5"> <label for="category" class="form-label">Categories</label>
+                    <select class="form-select" id="category" required name="category">
+                        <% if(post.category) { %>
+                            <option selected>
+                                <%= post.category %>
+                            </option>
+
+                            <% }%>
+                                <option disabled>Choose an option... </option>
+                                <% categories.forEach((categ)=> { %>
+
+                                    <option value="<%= categ %>">
+                                        <%= categ %>
+                                    </option>
+
+                                    <% }) %>
+
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid category.
+                    </div>
+                </div>
+
+
+                <hr class="my-4">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Edit</button>
+        </form>
+    </div>
+
+
+    <%- include("partials/footer.ejs") %>

@@ -1,0 +1,38 @@
+<%- include("partials/header.ejs") %>
+
+
+    <div class="container-md custom-large ">
+        <% if (posts.length !==0) { posts.forEach((post)=> { %>
+            <div class="card mb-3">
+                <div class="card-body ">
+                    <h5 class="card-title pb-2">
+                        <a href="/post/<%= post.category %>/<%= post.id %>" class="text-decoration-none link-dark ">
+                            <%= post.title %>
+                        </a>
+                    </h5>
+                    <p class="card-text overflow-hidden mb-1 text-indent" style="min-height: 5rem; max-height: 5rem;">
+                        <%= post.post %>
+                    </p>
+                    <div class="text-end pb-1">
+                        <small class="text-body-secondary ">
+                            <a href="/post/<%= post.category %>/<%= post.id %>"
+                                class="link-secondary text-decoration-none pb-2 mb-1">Read more...</a></small>
+                    </div>
+
+                    <p class="card-text d-flex flex-row justify-content-between">
+                        <small class="text-body-secondary ">
+                            Category:
+                            <%= post.category %>
+                        </small>
+                        <small class="text-body-secondary"> Last updated: <%= post.date %></small>
+                    </p>
+                </div>
+            </div>
+            <% })} else { %>
+                <p class="text-uppercase">Hi, there is no posts yet.</p>
+
+                <% }%>
+    </div>
+
+
+    <%- include("partials/footer.ejs") %>

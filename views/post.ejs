@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="container  custom-large" style="margin-top: -5px">
+    <div class="card">
+      <div class="card-header">
+        <strong>
+          <%= post.title %>
+        </strong>
+      </div>
+      <div class="card-body pb-1">
+
+        <p class="card-text text-indent lh-base text-justify ">
+          <%= post.post%>
+        </p>
+        <div class="text-end ">
+          <div class="card-text d-flex flex-row justify-content-start align-items-end pb-1">
+            <form action="/edit_post/<%= post.category%>/<%=post.id%>" method="GET">
+              <button type="submit"
+                class="btn btn-link text-body-secondary ms-1 text-decoration-none"><small>Edit...</small></button>
+            </form>
+
+            <form action="/<%= post.category%>/<%=post.id%>/?_method=DELETE" method="POST">
+              <button type="submit"
+                class="btn btn-link text-body-secondary ms-3 text-decoration-none"><small>Delete...</small></button>
+            </form>
+
+            <a href="/<%= backPath === " Wrong Turns"? "Wrong_Turns" : backPath %>" class="btn btn-link mt-1
+              me-3 m-auto p-0 text-decoration-none link-body-emphasis">Back
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <p class="<%= display === " none" ? "d-none" : "" %> ms-3 mt-2 "><small>This post cannot be <%= inform %>.</small>
+    </p>
+  </div>
+
+
+  <%- include("partials/footer.ejs") %>
